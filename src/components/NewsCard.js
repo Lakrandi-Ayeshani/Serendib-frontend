@@ -16,10 +16,11 @@ const NewsCard = ({articles, setClickedArticle}) => {
 
   return (
     <div className='container'>
-       <Row xs={1} md={2} className="g-4">
+      <Row xs={1} md={2} className="g-4">
       {articles.map((article, index) => (
-        <Col>
-        <Card key={index} className='border-5 m-3 news-card' onClick={() => handleClick(article)}>
+        article.title !== "[Removed]" && (
+        <Col key={index} onClick={() => handleClick(article)}>
+        <Card  className='border-5 m-3 news-card'>
           <Card.Body>
             <Card.Title className='text-start'>{article.title}</Card.Title>
             <div >
@@ -41,6 +42,7 @@ const NewsCard = ({articles, setClickedArticle}) => {
           </Card.Body>
         </Card>
         </Col>
+        )
       ))}
       </Row>
     </div>
